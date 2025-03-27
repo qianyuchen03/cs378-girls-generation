@@ -4,6 +4,7 @@ import Navbar from './components/Navbar';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import FriendsScreen from './screens/Friends/FriendsScreen';
 import HomeScreen from './screens/Home/HomeScreen';
+import FriendBoardScreen from './screens/FriendBoard/FriendBoardScreen';
 import Recommendations from './components/Recommendations';
 
 function App() {
@@ -15,6 +16,7 @@ function App() {
           <Routes>
             <Route path="/" element={<HomeScreen />} />
             <Route path="/friends" element={<FriendsScreen />} />
+            <Route path="/board/:friendId/:boardId" element={<FriendBoardScreen />} />
           </Routes>
         </div>
         
