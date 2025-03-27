@@ -12,7 +12,6 @@ function App() {
       <div className="App">
         {/* Main content area with padding bottom to avoid navbar overlap */}
         <div className="content pb-5">
-          <Recommendations />
           <Routes>
             <Route path="/" element={<HomeScreen />} />
             <Route path="/friends" element={<FriendsScreen />} />
