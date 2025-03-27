@@ -1,0 +1,24 @@
+/* HomeScreen.css */
+.home-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    text-align: center;
+  }
+  
+  .welcome-message {
+    font-size: 24px;
+    margin-bottom: 24px;
+    color: #333;
+  }
+  
+  .featured-boards {
+    margin-top: 32px;
+  }
+  
+  .section-title {
+    font-size: 20px;
+    margin-bottom: 16px;
+    color: #444;
+    text-align: left;
+  }
