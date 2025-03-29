@@ -26,8 +26,42 @@ const FriendsScreen = () => {
         { id: 1, title: "Art", image: "🎨" },
         { id: 2, title: "Books", image: "📚" },
         { id: 3, title: "Games", image: "🎮" },
+        { id: 4, title: "Movies", image: "🎬" },
       ],
     },
+    {
+      id: 3,
+      name: "Taylor Smith",
+      avatar: "TS",
+      boards: [
+        { id: 1, title: "Photography", image: "📷" },
+        { id: 2, title: "Nature", image: "🌿" },
+        { id: 3, title: "DIY", image: "🛠️" },
+      ],
+    },
+    {
+      id: 4,
+      name: "Jordan Lee",
+      avatar: "JL",
+      boards: [
+        { id: 1, title: "Cooking", image: "👨‍🍳" },
+        { id: 2, title: "Baking", image: "🍰" },
+        { id: 3, title: "Coffee", image: "☕" },
+        { id: 4, title: "Wine", image: "🍷" },
+      ],
+    },
+    {
+      id: 5,
+      name: "Casey Kim",
+      avatar: "CK",
+      boards: [
+        { id: 1, title: "Tech", image: "📱" },
+        { id: 2, title: "Startups", image: "💡" },
+        { id: 3, title: "Coding", image: "👨‍💻" },
+        { id: 4, title: "AI", image: "🤖" },
+        { id: 5, title: "VR", image: "👓" },
+      ],
+    }
   ];
 
   const handleBoardClick = (friend, board) => {
