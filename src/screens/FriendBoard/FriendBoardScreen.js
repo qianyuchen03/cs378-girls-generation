@@ -1,92 +1,47 @@
-// screens/Friends/FriendsScreen.js
+// screens/FriendBoard/FriendBoardScreen.js
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import './FriendBoardScreen.css';
 
-const FriendsScreen = () => {
+const FriendBoardScreen = () => {
   const navigate = useNavigate();
+  const { state } = useLocation();
+  const { friend, board } = state || {};
 
-  const friends = [
-    {
-      id: 1,
-      name: 'Alex Johnson',
-      avatar: 'AJ',
-      boards: [
-        { id: 1, title: 'Travel', image: '✈️' },
-        { id: 2, title: 'Food', image: '🍕' },
-        { id: 3, title: 'Work', image: '💼' }
-      ]
-    },
-    {
-      id: 2,
-      name: 'Sam Wilson',
-      avatar: 'SW',
-      boards: [
-        { id: 1, title: 'Fitness', image: '🏋️' },
-        { id: 2, title: 'Recipes', image: '🍳' }
-      ]
-    },
-    {
-      id: 3,
-      name: 'Taylor Smith',
-      avatar: 'TS',
-      boards: [
-        { id: 1, title: 'Art', image: '🎨' },
-        { id: 2, title: 'Photography', image: '📷' },
-        { id: 3, title: 'Design', image: '✏️' }
-      ]
-    },
-    {
-      id: 4,
-      name: 'Jordan Lee',
-      avatar: 'JL',
-      boards: [
-        { id: 1, title: 'Music', image: '🎵' },
-        { id: 2, title: 'Concerts', image: '🎤' }
-      ]
-    },
-    {
-      id: 5,
-      name: 'Casey Kim',
-      avatar: 'CK',
-      boards: [
-        { id: 1, title: 'Tech', image: '💻' },
-        { id: 2, title: 'Gadgets', image: '📱' },
-        { id: 3, title: 'Coding', image: '👨‍💻' }
-      ]
-    }
+  // Sample board items
+  const boardItems = [
+    { id: 1, image: 'image1.jpg', title: 'Beach Vacation' },
+    { id: 2, image: 'image2.jpg', title: 'Mountain Hike' },
+    // ... more items
   ];
 
-  const handleBoardClick = (friend, board) => {
-    navigate(`/board/${friend.id}/${board.id}`, {
-      state: { friend, board }
-    });
-  };
-
   return (
-    <div className="friends-screen">
-      <h2>Friends</h2>
-      <div className="friends-list">
-        {friends.map(friend => (
-          <div key={friend.id} className="friend-container">
-            <div className="friend-profile">
-              <div className="friend-avatar">{friend.avatar}</div>
-              <h3 className="friend-name">{friend.name}</h3>
-            </div>
-            <div className="boards-scroll-container">
-              <div className="boards-scroll">
-                {friend.boards.map(board => (
-                  <div 
-                    key={board.id} 
-                    className="board-card"
-                    onClick={() => handleBoardClick(friend, board)}
-                  >
-                    <div className="board-icon">{board.image}</div>
-                    <div className="board-title">{board.title}</div>
-                  </div>
-                ))}
-              </div>
-            </div>
+    <div className="board-screen">
+      {/* Header with back button and profile */}
+      <div className="board-header">
+        <button 
+          className="back-button"
+          onClick={() => navigate('/friends')}
+        >
+          ← 
+        </button>
+        
+        <div className="board-profile">
+          <div className="friend-avatar">{friend?.avatar}</div>
+          <h3>{friend?.name}'s {board?.title} Board</h3>
+        </div>
+      </div>
+
+      {/* Pinterest-style grid */}
+      <div className="pinterest-grid">
+        {boardItems.map(item => (
+          <div key={item.id} className="grid-item">
+            <img 
+              src={item.image} 
+              alt={item.title} 
+              className="grid-image"
+            />
+            <div className="image-title">{item.title}</div>
           </div>
         ))}
       </div>
@@ -94,4 +49,4 @@ const FriendsScreen = () => {
   );
 };
 
-export default FriendsScreen;
+export default FriendBoardScreen;

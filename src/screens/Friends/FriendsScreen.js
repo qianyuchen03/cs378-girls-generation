@@ -2,6 +2,13 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import "./FriendsScreen.css";
+import camping from "../../assets/board-icons/camping.jpeg"
+import defaultIcon from "../../assets/board-icons/default.png";
+import caves from "../../assets/board-icons/caves.avif"
+import desert from "../../assets/board-icons/desert.jpeg"
+import foliage from "../../assets/board-icons/foliage.jpeg"
+import souks from "../../assets/board-icons/souks.jpeg"
+
 
 const FriendsScreen = () => {
   const navigate = useNavigate();
@@ -11,11 +18,11 @@ const FriendsScreen = () => {
       name: "Alex Johnson",
       avatar: "AJ",
       boards: [
-        { id: 1, title: "Travel", image: "🌴" },
-        { id: 2, title: "Food", image: "🍕" },
-        { id: 3, title: "Work", image: "💻" },
-        { id: 4, title: "Music", image: "🎵" },
-        { id: 5, title: "Fitness", image: "🏋️" },
+        { id: 1, title: "Camping", image: camping },
+        { id: 2, title: "Caves", image: caves },
+        { id: 3, title: "Desert", image: desert },
+        { id: 4, title: "Foliage", image: foliage },
+        { id: 5, title: "Morocco", image: souks },
       ],
     },
     {
@@ -92,7 +99,17 @@ const FriendsScreen = () => {
                     className="board-card"
                     onClick={() => handleBoardClick(friend, board)}
                   >
-                    <div className="board-icon">{board.image}</div>
+                    <div className="board-icon">
+                      <img 
+                        src={board.image} 
+                        alt={board.title}
+                        className="board-image"
+                        onError={(e) => {
+                          e.target.src = defaultIcon;
+                          e.target.alt = "Default board icon";
+                        }}
+                      />
+                    </div>
                     <div className="board-title">{board.title}</div>
                   </div>
                 ))}
