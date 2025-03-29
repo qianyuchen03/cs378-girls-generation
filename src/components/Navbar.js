@@ -9,7 +9,7 @@ const Navigation = () => {
       <Container className="px-0">
         <Nav className="w-100 d-flex justify-content-evenly">
           <NavItem icon={<MapPin size={24} />} to="/map" />
-          <NavItem icon={<Heart size={24} />} to="/favorites" />
+          <NavItem icon={<Heart size={24} />} to="/saved" />
           <NavItem icon={<Home size={24} />} to="/" />
           <NavItem icon={<Users size={24} />} to="/friends" />
           <NavItem icon={<User size={24} />} to="/profile" />
