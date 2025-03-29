@@ -8,6 +8,12 @@ import caves from "../../assets/board-icons/caves.avif"
 import desert from "../../assets/board-icons/desert.jpeg"
 import foliage from "../../assets/board-icons/foliage.jpeg"
 import souks from "../../assets/board-icons/souks.jpeg"
+import sakura from "../../assets/board-icons/sakura.jpeg"
+import surf from "../../assets/board-icons/surf.jpeg"
+import waterfall from "../../assets/board-icons/waterfall.jpg"
+import winery from "../../assets/board-icons/winery.jpeg"
+import yoga from "../../assets/board-icons/yoga.jpeg"
+import haunted from "../../assets/board-icons/haunted.jpeg"
 
 
 const FriendsScreen = () => {
@@ -30,10 +36,10 @@ const FriendsScreen = () => {
       name: "Sam Wilson",
       avatar: "SW",
       boards: [
-        { id: 1, title: "Art", image: "🎨" },
-        { id: 2, title: "Books", image: "📚" },
-        { id: 3, title: "Games", image: "🎮" },
-        { id: 4, title: "Movies", image: "🎬" },
+        { id: 1, title: "Japan", image: sakura },
+        { id: 2, title: "Surf", image: surf },
+
+
       ],
     },
     {
@@ -41,9 +47,8 @@ const FriendsScreen = () => {
       name: "Taylor Smith",
       avatar: "TS",
       boards: [
-        { id: 1, title: "Photography", image: "📷" },
-        { id: 2, title: "Nature", image: "🌿" },
-        { id: 3, title: "DIY", image: "🛠️" },
+        { id: 1, title: "Yoga", image: yoga },
+        { id: 2, title: "Bali", image: waterfall },
       ],
     },
     {
@@ -51,10 +56,7 @@ const FriendsScreen = () => {
       name: "Jordan Lee",
       avatar: "JL",
       boards: [
-        { id: 1, title: "Cooking", image: "👨‍🍳" },
-        { id: 2, title: "Baking", image: "🍰" },
-        { id: 3, title: "Coffee", image: "☕" },
-        { id: 4, title: "Wine", image: "🍷" },
+        { id: 1, title: "Winery", image: winery },
       ],
     },
     {
@@ -62,11 +64,8 @@ const FriendsScreen = () => {
       name: "Casey Kim",
       avatar: "CK",
       boards: [
-        { id: 1, title: "Tech", image: "📱" },
-        { id: 2, title: "Startups", image: "💡" },
-        { id: 3, title: "Coding", image: "👨‍💻" },
-        { id: 4, title: "AI", image: "🤖" },
-        { id: 5, title: "VR", image: "👓" },
+        { id: 1, title: "Haunted", image: haunted },
+        { id: 2, title: "Waterfall", image: waterfall },
       ],
     }
   ];
