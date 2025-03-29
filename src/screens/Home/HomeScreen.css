@@ -1,24 +1,24 @@
-/* HomeScreen.css */
-.home-container {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 20px;
-    text-align: center;
-  }
-  
-  .welcome-message {
-    font-size: 24px;
-    margin-bottom: 24px;
-    color: #333;
-  }
-  
-  .featured-boards {
-    margin-top: 32px;
-  }
-  
-  .section-title {
-    font-size: 20px;
-    margin-bottom: 16px;
-    color: #444;
-    text-align: left;
-  }
+/* src/screens/Home/HomeScreen.css */
+
+.home-header {
+  z-index: 1000;
+  border-bottom: 1px solid #eee;
+}
+
+.image-feed {
+  height: calc(100vh - 120px);
+  overflow-y: auto;
+}
+
+.image-container {
+  aspect-ratio: 1/1;
+  margin-bottom: 8px;
+}
+
+.image-container img {
+  transition: transform 0.2s;
+}
+
+.image-container img:hover {
+  transform: scale(1.02);
+}

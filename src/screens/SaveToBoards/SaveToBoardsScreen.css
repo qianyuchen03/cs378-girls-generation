@@ -1,0 +1,31 @@
+/* SaveToBoardsScreen.css */
+
+.boards-checklist .list-group-item {
+  border-left: 0;
+  border-right: 0;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.boards-checklist .list-group-item:first-child {
+  border-top: 0;
+}
+
+.boards-checklist .list-group-item:last-child {
+  border-bottom: 0;
+}
+
+.boards-checklist .list-group-item:hover {
+  background-color: #f8f9fa;
+}
+
+.boards-checklist .list-group-item.active {
+  background-color: #e9f5ff;
+  border-color: rgba(0,0,0,0.125);
+  color: #000;
+}
+
+.check-mark {
+  color: #0d6efd;
+  font-weight: bold;
+}

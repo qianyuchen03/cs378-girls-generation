@@ -5,7 +5,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import FriendsScreen from './screens/Friends/FriendsScreen';
 import HomeScreen from './screens/Home/HomeScreen';
 import FriendBoardScreen from './screens/FriendBoard/FriendBoardScreen';
-import Recommendations from './components/Recommendations';
+import SaveToBoardsScreen from './screens/SaveToBoards/SaveToBoardsScreen';
 
 function App() {
   return (
@@ -17,6 +17,7 @@ function App() {
             <Route path="/" element={<HomeScreen />} />
             <Route path="/friends" element={<FriendsScreen />} />
             <Route path="/board/:friendId/:boardId" element={<FriendBoardScreen />} />
+            <Route path="/save-to-boards" element={<SaveToBoardsScreen />} />
           </Routes>
         </div>
         
