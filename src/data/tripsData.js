@@ -3,7 +3,7 @@ const tripsData = [
       id: 1,
       city: 'Las Vegas',
       country: 'NV, USA',
-      saved: true,
+      saved: false,
       price: '$$$',
       tags: ['Nightlife', 'Desert'],
       activities: ['Casino Hopping', 'Grand Canyon Tour', 'High Roller Observation Wheel'],
