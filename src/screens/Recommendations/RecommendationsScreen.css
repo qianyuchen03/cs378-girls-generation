@@ -1,0 +1,62 @@
+.screen {
+    padding: 20px;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px; /* Slightly closer to the card */
+}
+
+.btn {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%; /* Circular buttons */
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    color: white;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.btn.check {
+    background-color: #28a745;
+    margin-right: 225px; /* Move check button closer to the center */
+}
+
+.btn.skip {
+    background-color: #dc3545;
+    margin-left: 150px; /* Move skip button closer to the center */
+}
+
+.btn:hover {
+    opacity: 0.8;
+}
+
+.tags {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.tag {
+    background-color: #4a6fa5;
+    color: white;
+    border-radius: 16px;
+    padding: 5px 10px;
+    font-size: 0.75rem;
+}
+
+.recommendation-card {
+    width: 90%;
+    max-width: 700px;
+    margin-bottom: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+  

@@ -8,7 +8,7 @@ const Navigation = () => {
     <Navbar bg="light" variant="light" fixed="bottom" className="shadow w-100">
       <Container className="px-0">
         <Nav className="w-100 d-flex justify-content-evenly">
-          <NavItem icon={<MapPin size={24} />} to="/map" />
+          <NavItem icon={<MapPin size={24} />} to="/recommendations" />
           <NavItem icon={<Heart size={24} />} to="/saved" />
           <NavItem icon={<Home size={24} />} to="/" />
           <NavItem icon={<Users size={24} />} to="/friends" />

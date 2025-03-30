@@ -7,6 +7,7 @@ import HomeScreen from './screens/Home/HomeScreen';
 import FriendBoardScreen from './screens/FriendBoard/FriendBoardScreen';
 import SaveToBoardsScreen from './screens/SaveToBoards/SaveToBoardsScreen';
 import SavedScreen from './screens/SavedBoard/SavedBoard';
+import RecommendationsScreen from './screens/Recommendations/RecommendationsScreen';
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
             <Route path="/board/:friendId/:boardId" element={<FriendBoardScreen />} />
             <Route path="/save-to-boards" element={<SaveToBoardsScreen />} />
             <Route path="/saved" element ={<SavedScreen />} />
+            <Route path="/recommendations" element ={<RecommendationsScreen />} />
           </Routes>
         </div>
         
