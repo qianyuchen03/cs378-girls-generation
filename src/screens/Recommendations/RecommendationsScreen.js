@@ -3,22 +3,27 @@ import { Card, Button } from "react-bootstrap";
 import { Check, X } from "lucide-react";
 import "./RecommendationsScreen.css";
 import RecommendationsCard from "../../components/RecommendationCard";
-import tripsData from '../../data/tripsData';
+import tripsData from '../../data/tripsData'; // Assuming tripsData is an array of objects
 import TripModal from '../../components/TripModal';
 
 const RecommendationsScreen = () => {
   const recommendationTrips = tripsData.filter(trip => !trip.saved);
+  const [trips, setTrips] = useState(recommendationTrips);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [clickedTripInfo, setClickedTripInfo] = useState(null);
 
+  const currentTrip = trips[currentIndex];
+
   const handleCheck = () => {
-    recommendationTrips[currentIndex].saved = true;
-    setCurrentIndex((prev) => prev + 1);
-  }
+    const updatedTrips = [...trips];
+    updatedTrips[currentIndex].saved = true;
+    setTrips(updatedTrips);
+    setCurrentIndex(prev => prev + 1);
+  };
 
   const handleSkip = () => {
-    setCurrentIndex((prev) => prev + 1);
-  }
+    setCurrentIndex(prev => prev + 1);
+  };
 
   const handleOpenModal = (trip) => {
     setClickedTripInfo(trip);
@@ -28,7 +33,7 @@ const RecommendationsScreen = () => {
     setClickedTripInfo(null);
   };
 
-  if (currentIndex >= recommendationTrips.length) {
+  if (currentIndex >= trips.length) {
     return (
       <div className="screen">
         <h2>Recommendations</h2>
@@ -36,20 +41,18 @@ const RecommendationsScreen = () => {
           <Card.Title>No more items</Card.Title>
         </Card>
       </div>
-    )
+    );
   }
-
-  const currentTrip = recommendationTrips[currentIndex];
 
   return (
     <div className="screen">
       <h2>Recommendations</h2>
       <RecommendationsCard trip={currentTrip} onOpenModal={handleOpenModal} />
       <div className="buttons">
-        <Button className="skip" onClick={handleSkip}>
+        <Button className="skip rec-btn" onClick={handleSkip}>
           <X />
         </Button>
-        <Button className="check" onClick={handleCheck}>
+        <Button className="check rec-btn" onClick={handleCheck}>
           <Check />
         </Button>
       </div>

@@ -10,7 +10,7 @@
     margin-top: 10px; /* Slightly closer to the card */
 }
 
-.btn {
+.rec-btn {
     width: 60px;
     height: 60px;
     border-radius: 50%; /* Circular buttons */
@@ -34,7 +34,11 @@
     margin-left: 150px; /* Move skip button closer to the center */
 }
 
-.btn:hover {
+.btn.skip:hover {
+    opacity: 0.8;
+}
+
+.btn.check:hover {
     opacity: 0.8;
 }
 
