@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { userBoards as initialBoards } from '../../data/boardsData';
 import './ProfileScreen.css';
 
@@ -9,12 +10,14 @@ export default function ProfileScreen() {
     const [showProfileModal, setShowProfileModal] = useState(false);
     const [showDeleteModal, setShowDeleteModal] = useState(false);
     const [boardToDelete, setBoardToDelete] = useState(null);
+    const navigate = useNavigate();
   
     const handleProfileClick = () => {
       setShowProfileModal(true);
     };
   
-    const handleDeleteClick = (boardId) => {
+    const handleDeleteClick = (boardId, e) => {
+      e.stopPropagation();
       setBoardToDelete(boardId);
       setShowDeleteModal(true);
     };
@@ -30,6 +33,17 @@ export default function ProfileScreen() {
       if (newProfilePic) setProfilePic(newProfilePic);
       setShowProfileModal(false);
     };
+
+const handleBoardClick = (board) => {
+  navigate(`/board/${board.id}`, { 
+    state: { 
+      board: {
+        ...board,
+        images: board.images || [] // Ensure images array exists
+      }
+    } 
+  });
+};
   
     return (
       <div className="profile-page">
@@ -42,10 +56,19 @@ export default function ProfileScreen() {
         <h3>Your Boards</h3>
         <div className="boards-container">
           {boards.map(board => (
-            <div className="board-card" key={board.id}>
+            <div 
+              className="board-card" 
+              key={board.id}
+              onClick={() => handleBoardClick(board)}
+            >
               <img src={board.image} alt={board.name} />
               <p>{board.name}</p>
-              <button className="board-menu-btn" onClick={() => handleDeleteClick(board.id)}>⋮</button>
+              <button 
+                className="board-menu-btn" 
+                onClick={(e) => handleDeleteClick(board.id, e)}
+              >
+                ⋮
+              </button>
             </div>
           ))}
         </div>
@@ -75,4 +98,4 @@ export default function ProfileScreen() {
         )}
       </div>
     );
-  };
+};
