@@ -1,15 +1,17 @@
 import React from 'react';
-import { useNavigate, useLocation } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { Container, Button } from 'react-bootstrap';
 import './UserBoardScreen.css';
 
-const UserBoardScreen = () => {
+const UserBoardScreen = ({ userBoards = [] }) => {
   const navigate = useNavigate();
-  const { state } = useLocation();
-  const { board } = state || {};
+  const { boardId } = useParams();
 
-  // Safely get images array with default empty array
-  const boardImages = board?.images || [];
+  // Find the current board safely
+  const board = userBoards.find(b => b.id === Number(boardId)) || {
+    name: 'Untitled Board',
+    images: []
+  };
 
   return (
     <Container className="py-4">
@@ -22,12 +24,12 @@ const UserBoardScreen = () => {
         >
           <span aria-hidden="true">&larr;</span>
         </Button>
-        <h2 className="mb-0">{board?.name || 'Untitled Board'}</h2>
+        <h2 className="mb-0">{board.name}</h2>
       </div>
 
       <div className="board-images-grid">
-        {boardImages.length > 0 ? (
-          boardImages.map((image, index) => (
+        {board.images.length > 0 ? (
+          board.images.map((image, index) => (
             <div key={index} className="board-image-item">
               <img 
                 src={image} 

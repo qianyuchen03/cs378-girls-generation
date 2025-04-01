@@ -3,7 +3,7 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import { Container, Button, Form, Card, Modal, ListGroup } from 'react-bootstrap';
 import './SaveToBoardsScreen.css';
 
-const SaveToBoardsScreen = ({ userBoards = [], setUserBoards = () => {} }) => {
+const SaveToBoardsScreen = ({ userBoards, setUserBoards }) => {
   const location = useLocation();
   const navigate = useNavigate();
   const { selectedImage } = location.state || {};
@@ -12,8 +12,9 @@ const SaveToBoardsScreen = ({ userBoards = [], setUserBoards = () => {} }) => {
   const [newBoardName, setNewBoardName] = useState('');
   const [selectedBoards, setSelectedBoards] = useState([]);
 
-  // Ensure userBoards is always an array
+  // Safely handle undefined props with defaults
   const safeUserBoards = Array.isArray(userBoards) ? userBoards : [];
+  const safeSetUserBoards = setUserBoards || (() => console.warn('setUserBoards not provided'));
 
   const handleBoardSelect = (boardId) => {
     setSelectedBoards(prev => 
@@ -28,13 +29,14 @@ const SaveToBoardsScreen = ({ userBoards = [], setUserBoards = () => {} }) => {
       if (selectedBoards.includes(board.id)) {
         return {
           ...board,
+          // Ensure images array exists before spreading
           images: [...(board.images || []), selectedImage]
         };
       }
       return board;
     });
     
-    setUserBoards(updatedBoards);
+    safeSetUserBoards(updatedBoards);
     navigate(-1);
   };
 
@@ -45,7 +47,7 @@ const SaveToBoardsScreen = ({ userBoards = [], setUserBoards = () => {} }) => {
       images: [selectedImage]
     };
     
-    setUserBoards([...safeUserBoards, newBoard]);
+    safeSetUserBoards([...safeUserBoards, newBoard]);
     setShowCreateModal(false);
     navigate(-1);
   };
@@ -81,20 +83,26 @@ const SaveToBoardsScreen = ({ userBoards = [], setUserBoards = () => {} }) => {
       
       <div className="boards-checklist mb-3">
         <ListGroup>
-          {safeUserBoards.map(board => (
-            <ListGroup.Item 
-              key={board.id}
-              action
-              onClick={() => handleBoardSelect(board.id)}
-              active={selectedBoards.includes(board.id)}
-              className="d-flex justify-content-between align-items-center"
-            >
-              {board.name}
-              {selectedBoards.includes(board.id) && (
-                <span className="check-mark">✓</span>
-              )}
+          {safeUserBoards.length > 0 ? (
+            safeUserBoards.map(board => (
+              <ListGroup.Item 
+                key={board.id}
+                action
+                onClick={() => handleBoardSelect(board.id)}
+                active={selectedBoards.includes(board.id)}
+                className="d-flex justify-content-between align-items-center"
+              >
+                {board.name}
+                {selectedBoards.includes(board.id) && (
+                  <span className="check-mark">✓</span>
+                )}
+              </ListGroup.Item>
+            ))
+          ) : (
+            <ListGroup.Item>
+              No boards available. Create one first.
             </ListGroup.Item>
-          ))}
+          )}
         </ListGroup>
       </div>
 
