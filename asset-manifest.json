@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/cs378-girls-generation/static/css/main.85e25d2f.css",
+    "main.js": "/cs378-girls-generation/static/js/main.637f2242.js",
+    "static/js/453.a74c8975.chunk.js": "/cs378-girls-generation/static/js/453.a74c8975.chunk.js",
+    "static/media/vegas.jpg": "/cs378-girls-generation/static/media/vegas.18cd593d377765d72745.jpg",
+    "static/media/china.jpg": "/cs378-girls-generation/static/media/china.6bb3727887ae1d10a27e.jpg",
+    "static/media/caves.avif": "/cs378-girls-generation/static/media/caves.5bb2766db6821ad30dc8.avif",
+    "static/media/waterfall.jpg": "/cs378-girls-generation/static/media/waterfall.0be1c12ac2f986f851ae.jpg",
+    "static/media/foliage.jpeg": "/cs378-girls-generation/static/media/foliage.880b6c014cd96cec0574.jpeg",
+    "static/media/souks.jpeg": "/cs378-girls-generation/static/media/souks.09251f33bda407556d81.jpeg",
+    "static/media/sakura.jpeg": "/cs378-girls-generation/static/media/sakura.7b070d2d700131ca422a.jpeg",
+    "static/media/winery.jpeg": "/cs378-girls-generation/static/media/winery.115ae6ec32d48b936f41.jpeg",
+    "index.html": "/cs378-girls-generation/index.html",
+    "main.85e25d2f.css.map": "/cs378-girls-generation/static/css/main.85e25d2f.css.map",
+    "main.637f2242.js.map": "/cs378-girls-generation/static/js/main.637f2242.js.map",
+    "453.a74c8975.chunk.js.map": "/cs378-girls-generation/static/js/453.a74c8975.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.85e25d2f.css",
+    "static/js/main.637f2242.js"
+  ]
+}
