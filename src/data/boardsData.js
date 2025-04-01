@@ -7,9 +7,9 @@ export const userBoards = [
   ];
 
   export const boardItems = [
-    { id: 1, image: 'image1.jpg', title: 'Beach Vacation' },
-    { id: 2, image: 'image2.jpg', title: 'Mountain Hike' },
-    { id: 3, image: 'image3.jpg', title: 'City Lights' },
-    { id: 4, image: 'image4.jpg', title: 'Forest Retreat' },
-    { id: 5, image: 'image5.jpg', title: 'Desert Sunset' },
-  ];
+    { id: 1, image: 'image1.jpg', title: 'Nightlife' },
+    { id: 2, image: 'image2.jpg', title: 'Springbreak' },
+    { id: 3, image: 'image3.jpg', title: 'Nature' },
+    { id: 4, image: 'image4.jpg', title: 'City' },
+    { id: 5, image: 'image5.jpg', title: 'International' },
+  ];  
