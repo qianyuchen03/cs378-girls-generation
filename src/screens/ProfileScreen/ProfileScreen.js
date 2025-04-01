@@ -1,26 +1,27 @@
 import React, { useState } from 'react';
-import { userBoards as initialBoards } from '../../data/boardsData';
+import { useNavigate } from 'react-router-dom';
 import './ProfileScreen.css';
 
-export default function ProfileScreen() {
+export default function ProfileScreen({ userBoards = [], setUserBoards = () => {} }) {
     const [username, setUsername] = useState('User123');
     const [profilePic, setProfilePic] = useState('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRsynwv-5qtogtOwJbIjaPFJUmHpzhxgqIAug&s');
-    const [boards, setBoards] = useState(initialBoards);
     const [showProfileModal, setShowProfileModal] = useState(false);
     const [showDeleteModal, setShowDeleteModal] = useState(false);
     const [boardToDelete, setBoardToDelete] = useState(null);
+    const navigate = useNavigate();
   
     const handleProfileClick = () => {
       setShowProfileModal(true);
     };
   
-    const handleDeleteClick = (boardId) => {
+    const handleDeleteClick = (boardId, e) => {
+      e.stopPropagation();
       setBoardToDelete(boardId);
       setShowDeleteModal(true);
     };
   
     const confirmDelete = () => {
-      setBoards(boards.filter(board => board.id !== boardToDelete));
+      setUserBoards(userBoards.filter(board => board.id !== boardToDelete));
       setShowDeleteModal(false);
       setBoardToDelete(null);
     };
@@ -29,6 +30,17 @@ export default function ProfileScreen() {
       if (newUsername) setUsername(newUsername);
       if (newProfilePic) setProfilePic(newProfilePic);
       setShowProfileModal(false);
+    };
+
+    const handleBoardClick = (board) => {
+      navigate(`/board/${board.id}`, { 
+        state: { 
+          board: {
+            ...board,
+            images: board.images || []
+          }
+        } 
+      });
     };
   
     return (
@@ -41,13 +53,30 @@ export default function ProfileScreen() {
   
         <h3>Your Boards</h3>
         <div className="boards-container">
-          {boards.map(board => (
-            <div className="board-card" key={board.id}>
-              <img src={board.image} alt={board.name} />
-              <p>{board.name}</p>
-              <button className="board-menu-btn" onClick={() => handleDeleteClick(board.id)}>⋮</button>
-            </div>
-          ))}
+          {userBoards.length > 0 ? (
+            userBoards.map(board => (
+              <div 
+                className="board-card" 
+                key={board.id}
+                onClick={() => handleBoardClick(board)}
+              >
+                {board.images.length > 0 ? (
+                  <img src={board.images[0]} alt={board.name} />
+                ) : (
+                  <div className="empty-board-thumbnail"></div>
+                )}
+                <p>{board.name}</p>
+                <button 
+                  className="board-menu-btn" 
+                  onClick={(e) => handleDeleteClick(board.id, e)}
+                >
+                  ⋮
+                </button>
+              </div>
+            ))
+          ) : (
+            <p className="no-boards-message">You haven't created any boards yet.</p>
+          )}
         </div>
   
         {showProfileModal && (
@@ -75,4 +104,4 @@ export default function ProfileScreen() {
         )}
       </div>
     );
-  };
+}

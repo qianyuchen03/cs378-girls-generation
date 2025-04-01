@@ -29,3 +29,12 @@
   color: #0d6efd;
   font-weight: bold;
 }
+
+/* Add this to your existing CSS */
+.button-group {
+  position: sticky;
+  bottom: 20px;
+  background: white;
+  padding-top: 10px;
+  padding-bottom: 5px;
+}

@@ -3,23 +3,18 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import { Container, Button, Form, Card, Modal, ListGroup } from 'react-bootstrap';
 import './SaveToBoardsScreen.css';
 
-// Mock data for existing boards
-const userBoards = [
-  { id: 1, name: 'Nightlife' },
-  { id: 2, name: 'Springbreak' },
-  { id: 3, name: 'Nature' },
-  { id: 4, name: 'City' },
-  { id: 5, name: 'International' },
-];
-
-const SaveToBoardsScreen = () => {
+const SaveToBoardsScreen = ({ userBoards, setUserBoards }) => {
   const location = useLocation();
   const navigate = useNavigate();
-  const { selectedImage, imageName } = location.state || {};
+  const { selectedImage } = location.state || {};
   
   const [showCreateModal, setShowCreateModal] = useState(false);
   const [newBoardName, setNewBoardName] = useState('');
   const [selectedBoards, setSelectedBoards] = useState([]);
+
+  // Safely handle undefined props with defaults
+  const safeUserBoards = Array.isArray(userBoards) ? userBoards : [];
+  const safeSetUserBoards = setUserBoards || (() => console.warn('setUserBoards not provided'));
 
   const handleBoardSelect = (boardId) => {
     setSelectedBoards(prev => 
@@ -30,12 +25,29 @@ const SaveToBoardsScreen = () => {
   };
 
   const handleSave = () => {
-    console.log('Saving to boards:', selectedBoards);
+    const updatedBoards = safeUserBoards.map(board => {
+      if (selectedBoards.includes(board.id)) {
+        return {
+          ...board,
+          // Ensure images array exists before spreading
+          images: [...(board.images || []), selectedImage]
+        };
+      }
+      return board;
+    });
+    
+    safeSetUserBoards(updatedBoards);
     navigate(-1);
   };
 
   const handleCreateAndSave = () => {
-    console.log('Creating new board:', newBoardName);
+    const newBoard = {
+      id: Date.now(),
+      name: newBoardName,
+      images: [selectedImage]
+    };
+    
+    safeSetUserBoards([...safeUserBoards, newBoard]);
     setShowCreateModal(false);
     navigate(-1);
   };
@@ -51,7 +63,6 @@ const SaveToBoardsScreen = () => {
 
   return (
     <Container className="py-4">
-      {/* Header with back button */}
       <div className="d-flex align-items-center mb-4">
         <Button 
           variant="light" 
@@ -70,43 +81,50 @@ const SaveToBoardsScreen = () => {
 
       <h4 className="mb-3">Select Boards</h4>
       
-      <div className="boards-checklist mb-4">
+      <div className="boards-checklist mb-3">
         <ListGroup>
-          {userBoards.map(board => (
-            <ListGroup.Item 
-              key={board.id}
-              action
-              onClick={() => handleBoardSelect(board.id)}
-              active={selectedBoards.includes(board.id)}
-              className="d-flex justify-content-between align-items-center"
-            >
-              {board.name}
-              {selectedBoards.includes(board.id) && (
-                <span className="check-mark">✓</span>
-              )}
+          {safeUserBoards.length > 0 ? (
+            safeUserBoards.map(board => (
+              <ListGroup.Item 
+                key={board.id}
+                action
+                onClick={() => handleBoardSelect(board.id)}
+                active={selectedBoards.includes(board.id)}
+                className="d-flex justify-content-between align-items-center"
+              >
+                {board.name}
+                {selectedBoards.includes(board.id) && (
+                  <span className="check-mark">✓</span>
+                )}
+              </ListGroup.Item>
+            ))
+          ) : (
+            <ListGroup.Item>
+              No boards available. Create one first.
             </ListGroup.Item>
-          ))}
+          )}
         </ListGroup>
       </div>
 
-      <Button 
-        variant="outline-secondary" 
-        className="w-100 mb-3"
-        onClick={() => setShowCreateModal(true)}
-      >
-        + Create new board
-      </Button>
+      <div className="button-group">
+        <Button 
+          variant="outline-secondary" 
+          className="w-100 mb-2"
+          onClick={() => setShowCreateModal(true)}
+        >
+          + Create new board
+        </Button>
 
-      <Button 
-        variant="danger" 
-        className="w-100"
-        onClick={handleSave}
-        disabled={selectedBoards.length === 0 && !newBoardName}
-      >
-        {selectedBoards.length > 0 ? `Save to ${selectedBoards.length} board(s)` : 'Save'}
-      </Button>
+        <Button 
+          variant="danger" 
+          className="w-100 mt-0"
+          onClick={handleSave}
+          disabled={selectedBoards.length === 0 && !newBoardName}
+        >
+          {selectedBoards.length > 0 ? `Save to ${selectedBoards.length} board(s)` : 'Save'}
+        </Button>
+      </div>
 
-      {/* Create New Board Modal */}
       <Modal show={showCreateModal} onHide={() => setShowCreateModal(false)}>
         <Modal.Header closeButton>
           <Modal.Title>Create new board</Modal.Title>
