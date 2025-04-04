@@ -33,7 +33,7 @@ function App() {
     localStorage.setItem('userBoards', JSON.stringify(userBoards));
   }, [userBoards]);
 
-  const handleLogin = () => setIsAuthenticated(true);
+  const handleLogin = () => setIsAuthenticated(false);
 
   return (
     <Router>
