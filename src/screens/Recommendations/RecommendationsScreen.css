@@ -1,66 +1,93 @@
-.screen {
+/* General Screen Layout */
+.recommendations-screen {
     padding: 20px;
-    max-width: 800px;
     margin: 0 auto;
+    background-color: #E4D6BE; /* Beige background */
+    min-height: 80vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center; /* Center content vertically */
 }
 
+/* Header Styling */
+.recommendations-header {
+    background-color: #558D8C;
+    text-align: left;
+    width: 100%;
+    min-height: 10vh;
+    display: flex;
+    align-items: center;
+}
+
+.recommendations-header h2 {
+    margin: 0; /* 👈 removes default margin */
+    margin-left: 5%;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: #E4D6BE;
+    font-family: "Rowdies", sans-serif;
+    font-weight: 700;
+}
+
+/* Card Styling */
+.recommendation-card {
+    width: 90%;
+    max-width: 400px;
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+.recommendation-card .card-img-top {
+    width: 95%; /* Adjust width of the image */
+    height: auto; /* Keep aspect ratio intact */
+    margin: 10px auto; /* Center the image and add space around it */
+    margin-bottom: 0px;
+    object-fit: cover; /* Optional: maintain aspect ratio while covering the area */
+    border-radius: 8px; /* Optional: rounded corners */
+}
+
+.recommendation-card .card-title {
+    font-family: "Rowdies", sans-serif;
+    font-weight: 700;
+    font-size: 28px;
+    margin-bottom: 0px;
+}
+
+.recommendation-card .card-text {
+    font-family: "Rowdies", sans-serif;
+    color: black;
+    margin-top: 0px;
+}
+
+/* Button Container */
 .buttons {
     display: flex;
-    justify-content: space-between;
-    margin-top: 10px; /* Slightly closer to the card */
+    justify-content: space-around;
+    width: 100%;
+    max-width: 400px;
+    margin-top: 10px;
 }
 
+/* Action Buttons */
 .rec-btn {
     width: 60px;
     height: 60px;
-    border-radius: 50%; /* Circular buttons */
-    border: none;
+    border-radius: 50%;
+    border: 4px solid black; /* Outlined buttons */
     display: flex;
     justify-content: center;
     align-items: center;
     font-size: 24px;
-    color: white;
+    color: black;
+    background-color: transparent;
     cursor: pointer;
-    transition: transform 0.2s;
+    transition: all 0.2s;
 }
 
-.btn.check {
-    background-color: #28a745;
-    margin-right: 225px; /* Move check button closer to the center */
+.rec-btn:hover {
+    background-color: rgba(0, 0, 0, 0.2);
+    border: #ffffff;
 }
-
-.btn.skip {
-    background-color: #dc3545;
-    margin-left: 150px; /* Move skip button closer to the center */
-}
-
-.btn.skip:hover {
-    opacity: 0.8;
-}
-
-.btn.check:hover {
-    opacity: 0.8;
-}
-
-.tags {
-    display: flex;
-    gap: 10px;
-    margin-top: 10px;
-}
-
-.tag {
-    background-color: #4a6fa5;
-    color: white;
-    border-radius: 16px;
-    padding: 5px 10px;
-    font-size: 0.75rem;
-}
-
-.recommendation-card {
-    width: 90%;
-    max-width: 700px;
-    margin-bottom: 20px;
-    border-radius: 12px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-  

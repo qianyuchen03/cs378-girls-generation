@@ -8,7 +8,7 @@ const RecommendationsCard = ({ trip, onOpenModal }) => {
             variant="top"
             src={trip.imageUrl}
             alt={trip.city}
-            style={{ maxHeight: "350px", objectFit: "cover" }}
+            style={{ height: "40vh", objectFit: "cover" }}
             />
             <Card.Body>
                 <Card.Title>{trip.city}</Card.Title>

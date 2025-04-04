@@ -5,7 +5,7 @@ import { NavLink } from "react-router-dom";
 
 const Navigation = () => {
   return (
-    <Navbar bg="light" variant="light" fixed="bottom" className="shadow w-100">
+    <Navbar fixed="bottom" className="shadow w-100 navigation-bar">
       <Container className="px-0">
         <Nav className="w-100 d-flex justify-content-evenly">
           <NavItem icon={<MapPin size={24} />} to="/recommendations" />
@@ -25,13 +25,15 @@ const NavItem = ({ icon, to = "#" }) => {
       as={NavLink} 
       to={to} 
       className={({ isActive }) => 
-        `d-flex flex-column align-items-center text-dark ${
+        `d-flex flex-column align-items-center nav-link-custom ${
           isActive ? "active-nav-item" : ""
         }`
       }
       end
     >
-      {icon}
+      {({ isActive }) =>
+        React.cloneElement(icon, { color: isActive ? "#E4D6BE" : "#000000" })
+      }
     </Nav.Link>
   );
 };

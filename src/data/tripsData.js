@@ -49,7 +49,7 @@ const tripsData = [
       country: 'Spain',
       saved: false,
       price: '$$$',
-      tags: ['Springbreak', 'International', 'Nightlife', 'Nature'],
+      tags: ['Springbreak', 'International', 'Nightlife'],
       activities: ['Ushuaïa Ibiza Beach Club', 'Sunset at Café del Mar', 'Es Vedrà Island'],
       hotels: ['Ushuaïa Ibiza Beach Hotel', 'Hard Rock Hotel Ibiza', 'Amistat Island Hostel Ibiza'],
       imageUrl: 'https://www.cataloniahotels.com/en/blog/wp-content/uploads/2020/02/ibiza-coast-e1582202128534.jpg'

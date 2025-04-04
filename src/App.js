@@ -15,7 +15,7 @@ import CreateAccountScreen from './screens/Login/CreateAccountScreen';
 import UserBoardScreen from './screens/UserBoard/UserBoardScreen';
 
 function App() {
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [isAuthenticated, setIsAuthenticated] = useState(true);
   const [userBoards, setUserBoards] = useState(() => {
     // Load from localStorage if available
     const saved = localStorage.getItem('userBoards');

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Card, Button } from "react-bootstrap";
-import { Check, X } from "lucide-react";
+import { Heart, X } from "lucide-react";
 import "./RecommendationsScreen.css";
 import RecommendationsCard from "../../components/RecommendationCard";
 import tripsData from '../../data/tripsData'; // Assuming tripsData is an array of objects
@@ -45,19 +45,23 @@ const RecommendationsScreen = () => {
   }
 
   return (
-    <div className="screen">
-      <h2>Recommendations</h2>
-      <RecommendationsCard trip={currentTrip} onOpenModal={handleOpenModal} />
-      <div className="buttons">
-        <Button className="skip rec-btn" onClick={handleSkip}>
-          <X />
-        </Button>
-        <Button className="check rec-btn" onClick={handleCheck}>
-          <Check />
-        </Button>
+    <>
+      <div className="recommendations-header">
+        <h2>Recommendations</h2>
       </div>
-      {clickedTripInfo && <TripModal trip={clickedTripInfo} onClose={closeModal} />}
-    </div>
+      <div className="recommendations-screen">
+        <RecommendationsCard trip={currentTrip} onOpenModal={handleOpenModal} />
+        <div className="buttons">
+          <Button className="skip rec-btn" onClick={handleSkip}>
+            <X strokeWidth={4}/>
+          </Button>
+          <Button className="check rec-btn" onClick={handleCheck}>
+            <Heart strokeWidth={4}/>
+          </Button>
+        </div>
+        {clickedTripInfo && <TripModal trip={clickedTripInfo} onClose={closeModal} />}
+      </div>
+    </>
   );
 };
 
