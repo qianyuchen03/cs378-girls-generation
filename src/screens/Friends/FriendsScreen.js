@@ -93,8 +93,13 @@ const FriendsScreen = () => {
   };
 
   return (
+    <>
+    <header className="app-header">
+    <h1>Friends</h1>
+  </header>
     <div className="friends-screen">
-      <h2>Friends</h2>
+
+
       
       {/* Unified Search Bar */}
       <div className="search-container">
@@ -203,6 +208,7 @@ const FriendsScreen = () => {
           ))}
       </div>
     </div>
+    </>
   );
 };
 
