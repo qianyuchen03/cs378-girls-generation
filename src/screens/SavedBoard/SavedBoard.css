@@ -1,20 +1,13 @@
-.container {
-    padding: 20px;
-  }
-  
-  .header {
-    color: #4a6fa5;
-    font-size: 2rem;
-    margin-bottom: 20px;
-  }
-  
-  .trips-list {
+ .trips-list {
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    width: 100%;
+    gap: 16px; /* space between cards */
+    padding: 0 16px; /* Optional: light side padding for breathing room */
+    box-sizing: border-box;
   }
   
-  .trip-card {
+   .trip-card {
     display: flex;
     background-color: #fff;
     border-radius: 12px;
@@ -22,7 +15,7 @@
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
     position: relative;
     cursor: pointer;
-  }
+  } 
   
   .trip-image {
     width: 120px;
@@ -39,10 +32,18 @@
     margin: 0;
     font-size: 1.25rem;
   }
+
+  .card-title {
+    font-family: "Rowdies", sans-serif;
+    font-weight: 700;
+    font-size: 28px;
+    margin-bottom: 0px;
+  }
   
-  p {
-    margin: 5px 0;
-    color: #666;
+  .card-text {
+    font-family: "Rowdies", sans-serif;
+    color: black;
+    margin-top: 0px;
   }
   
   .tags {
@@ -66,22 +67,6 @@
 
   .tag:nth-child(even) {
     background-color: #97483E; 
-  }
-  
-  .heart-button {
-    background: none;
-    border: none;
-    font-size: 1.5rem;
-    cursor: pointer;
-    color: red;
-    padding: 10px;
-    position: absolute;
-    top: 10px;
-    right: 10px;
-  }
-  
-  .heart-button:hover {
-    color: #ff0000;
   }
   
   .modal-overlay {
@@ -117,4 +102,77 @@
   
   .close-button:hover {
     color: #ff0000;
-  }
+  } 
+
+  /* General Screen Layout */
+.recommendations-screen {
+  min-height: 100vh;
+  justify-content: flex-start;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch; /* Ensure items stretch full width */
+  width: 100%;
+  padding: 0; /* Remove padding that might center content */
+  margin: 0;
+  background-color: #E4D6BE; /* Beige background */
+}
+
+/* Header Styling */
+.recommendations-header {
+  background-color: #558D8C;
+  text-align: left;
+  width: 100%;
+  min-height: 10vh;
+  display: flex;
+  align-items: center;
+}
+
+.recommendations-header h2 {
+  margin: 0; /* 👈 removes default margin */
+  margin-left: 5%;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: #E4D6BE;
+  font-family: "Rowdies", sans-serif;
+  font-weight: 700;
+}
+
+/* Button Container */
+.buttons {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  max-width: 400px;
+  margin-top: 10px;
+}
+
+/* Action Buttons */
+.trip-heart-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 2px solid black; /* Outlined buttons */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 24px;
+  color: black;
+  background-color: transparent;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.trip-heart-btn svg {
+  fill: red;
+  stroke: red;
+  width: 20px;
+  height: 20px;
+}
+
+.trip-heart-btn:hover {
+  background-color: rgba(0, 0, 0, 0.2);
+  border: #ffffff;
+}
