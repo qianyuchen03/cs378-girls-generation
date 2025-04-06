@@ -1,12 +1,33 @@
-
 .profile-page {
-    padding: 20px;
+    min-height: 100vh;
+    justify-content: flex-start;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch; /* Ensure items stretch full width */
+    width: 100%;
+    padding: 0; /* Remove padding that might center content */
+    margin: 0;
+    background-color: #E4D6BE; /* Beige background */
   }
   
+  /* Header Styling */
   .profile-header {
+    background-color: #558D8C;
+    text-align: left;
+    width: 100%;
+    min-height: 10vh;
     display: flex;
     align-items: center;
-    gap: 20px;
+  }
+  
+  .profile-header h2 {
+    margin: 0; /* 👈 removes default margin */
+    margin-left: 5%;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: #E4D6BE;
+    font-family: "Rowdies", sans-serif;
+    font-weight: 700;
   }
   
   .profile-pic {
