@@ -13,6 +13,7 @@ const LoginScreen = ({ onLogin }) => {
     };
 
     return (
+      <div className='login-create-account-screen'>
         <Container className='form-container'>
           <h2 className='login-header'>Login</h2>
           <Form onSubmit={handleSubmit}>
@@ -31,11 +32,13 @@ const LoginScreen = ({ onLogin }) => {
             </Button>
 
             <div className="mt-3 text-center">
-                <p>Don't have an account? <Link to="/create-account">Create one here</Link></p>
+                <p className='create-account-link-container'>Don't have an account?</p>
+                <p><Link className="create-account-link" to="/create-account">Create one here</Link></p>
             </div> 
           </Form>
         </Container>
-      );
+      </div> 
+    );
 };
 
 export default LoginScreen;

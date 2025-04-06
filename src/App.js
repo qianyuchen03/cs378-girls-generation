@@ -15,7 +15,7 @@ import CreateAccountScreen from './screens/Login/CreateAccountScreen';
 import UserBoardScreen from './screens/UserBoard/UserBoardScreen';
 
 function App() {
-  const [isAuthenticated, setIsAuthenticated] = useState(true);
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [userBoards, setUserBoards] = useState(() => {
     // Load from localStorage if available
     const saved = localStorage.getItem('userBoards');
@@ -33,12 +33,12 @@ function App() {
     localStorage.setItem('userBoards', JSON.stringify(userBoards));
   }, [userBoards]);
 
-  const handleLogin = () => setIsAuthenticated(false);
+  const handleLogin = () => setIsAuthenticated(true);
 
   return (
     <Router>
       <div className="App">
-        <div className="content pb-5">
+        <div className="">
           <Routes>
             {isAuthenticated ? (
               <>

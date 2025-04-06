@@ -2,8 +2,8 @@
 .recommendations-screen {
     padding: 20px;
     margin: 0 auto;
-    background-color: #E4D6BE; /* Beige background */
-    min-height: 80vh;
+    background-color: #E4D6BE; 
+    min-height: 90vh;
     display: flex;
     flex-direction: column;
     align-items: center;

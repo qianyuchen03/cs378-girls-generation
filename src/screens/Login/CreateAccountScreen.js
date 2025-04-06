@@ -13,12 +13,13 @@ const CreateAccountScreen = ({ onLogin }) => {
     };
 
     return (
+      <div className='login-create-account-screen'>
         <Container className='form-container'>
           <h2 className='login-header'>Create Account</h2>
           <Form onSubmit={handleSubmit}>
             <Form.Group className='mb-3' controlId='formBasicName'>
               <Form.Label>Full Name</Form.Label>
-              <Form.Control type='text' placeholder='Enter your name' />
+              <Form.Control style={{ marginTop: '0px' }}type='text' placeholder='Enter your name' />
             </Form.Group>
     
             <Form.Group className='mb-3' controlId='formBasicEmail'>
@@ -36,6 +37,7 @@ const CreateAccountScreen = ({ onLogin }) => {
             </Button>
           </Form>
         </Container>
+      </div>
     );
 };
 
