@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import TripCard from '../../components/TripCard';
 import tripsData from '../../data/tripsData';
 import TripModal from '../../components/TripModal';
-import './SavedBoard.css'
+// import './SavedBoard.css'
+import '../Recommendations/RecommendationsScreen.css'
 
 const SavedScreen = () => {
     const [savedTrips, setSavedTrips] = useState(tripsData.filter(trip => trip.saved));
@@ -24,8 +25,11 @@ const SavedScreen = () => {
   };
 
   return (
-    <div className="saved-trips">
-      <h1>Saved Trips</h1>
+    <>
+      <div className="recommendations-header">
+      <h2>Saved Trips</h2>
+      </div>
+    <div className="recommendations-screen">
       <div className="trips-container">
         {savedTrips.length > 0 ? (
           savedTrips.map(trip => (
@@ -42,6 +46,7 @@ const SavedScreen = () => {
       </div>
       {selectedTrip && <TripModal trip={selectedTrip} onClose={closeModal} />}
     </div>
+    </>
   );
 }
 
