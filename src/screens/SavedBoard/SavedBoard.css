@@ -91,34 +91,22 @@
     color: #333;
     box-shadow: 0 8px 16px rgba(0,0,0,0.2);
     position: relative;
+    text-align: left!important;
   }
-  
-  /* .close-button {
-    background: none;
-    border: none;
-    font-size: 1.5rem;
-    cursor: pointer;
-    color: #4a6fa5;
-    position: absolute;
-    top: 10px;
-    left: 10px;
-  }
-  
-  .close-button:hover {
-    color: #ff0000;
-  }  */
 
   .close-button {
+    position: absolute;
+    top: 12px;
+    right: 12px;
     background: none;
     border: none;
-    font-size: 1.5rem;
     cursor: pointer;
     color: #558D8C;
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    font-weight: bold;
     transition: color 0.2s;
+    padding: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
   
   .close-button:hover {
@@ -156,15 +144,6 @@
   color: #E4D6BE;
   font-family: "Rowdies", sans-serif;
   font-weight: 700;
-}
-
-/* Button Container */
-.buttons {
-  display: flex;
-  justify-content: space-around;
-  width: 100%;
-  max-width: 400px;
-  margin-top: 10px;
 }
 
 /* Action Buttons */

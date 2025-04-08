@@ -1,11 +1,14 @@
 import React from 'react';
 import '../screens/SavedBoard/SavedBoard.css'
+import { X } from "lucide-react";
 
 const TripModal = ({ trip, onClose }) => {
   return (
     <div className="modal-overlay" onClick={onClose}>
       <div className="modal-content" onClick={(e) => e.stopPropagation()}>
-        <button className="close-button" onClick={onClose}>X</button>
+      <button className="close-button" onClick={onClose}>
+        <X size={20} />
+      </button>
         <h2>{trip.city}, {trip.country}</h2>
         <p>Price: {trip.price}</p>
         <h4>Activities:</h4>
