@@ -18,9 +18,6 @@ const TripCard = ({ trip, onRemove, onOpenModal }) => {
             <span key={index} className="tag">{tag}</span>
           ))}
         </div>
-      {/* <button className="heart-button" onClick={(e) => { e.stopPropagation(); onRemove(trip.id); }}>
-        ♥
-      </button> */}
       <Button className="check trip-heart-btn" onClick={(e) => { e.stopPropagation(); onRemove(trip.id); }}>
             <Heart strokeWidth={4}/>
       </Button>

@@ -1,19 +1,24 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import TripCard from '../../components/TripCard';
-import tripsData from '../../data/tripsData';
 import TripModal from '../../components/TripModal';
 import './SavedBoard.css'
-// import '../Recommendations/RecommendationsScreen.css'
+import { getSavedTrips, unsaveTrip } from '../../services/tripService';
 
 const SavedScreen = () => {
-    const [savedTrips, setSavedTrips] = useState(tripsData.filter(trip => trip.saved));
+  const [savedTrips, setSavedTrips] = useState([]);
   const [selectedTrip, setSelectedTrip] = useState(null);
 
-  const handleToggleSave = (id) => {
-    const updatedTrips = savedTrips.map(trip =>
-      trip.id === id ? { ...trip, saved: !trip.saved } : trip
-    );
-    setSavedTrips(updatedTrips.filter(trip => trip.saved));
+  useEffect(() => {
+    const fetchSavedTrips = async () => {
+      const trips = await getSavedTrips();
+      setSavedTrips(trips);
+    };
+    fetchSavedTrips();
+  }, []);
+
+  const handleToggleSave = async (id) => {
+    await unsaveTrip(id);
+    setSavedTrips(prevTrips => prevTrips.filter(trip => trip.id !== id));
   };
 
   const handleOpenModal = (trip) => {
