@@ -89,13 +89,14 @@ const SaveToBoardsScreen = ({ userBoards, setUserBoards }) => {
                 key={board.id}
                 action
                 onClick={() => handleBoardSelect(board.id)}
-                active={selectedBoards.includes(board.id)}
-                className="d-flex justify-content-between align-items-center"
+                className="d-flex align-items-center ps-3"
               >
-                {board.name}
-                {selectedBoards.includes(board.id) && (
-                  <span className="check-mark">✓</span>
-                )}
+                <div className={`check-circle ${selectedBoards.includes(board.id) ? 'checked' : ''}`}>
+                  {selectedBoards.includes(board.id) && (
+                    <span className="check-icon">✓</span>
+                  )}
+                </div>
+                <span className="ms-3">{board.name}</span>
               </ListGroup.Item>
             ))
           ) : (
@@ -116,8 +117,8 @@ const SaveToBoardsScreen = ({ userBoards, setUserBoards }) => {
         </Button>
 
         <Button 
-          variant="danger" 
-          className="w-100 mt-0"
+          variant="primary" 
+          className="w-100 mt-0 save-button"
           onClick={handleSave}
           disabled={selectedBoards.length === 0 && !newBoardName}
         >
