@@ -1,23 +1,29 @@
-import React, { useState } from "react";
-import { Card, Button } from "react-bootstrap";
+import React, { useEffect, useState } from "react";
+import { Button } from "react-bootstrap";
 import { Heart, X } from "lucide-react";
 import "./RecommendationsScreen.css";
 import RecommendationsCard from "../../components/RecommendationCard";
-import tripsData from '../../data/tripsData'; // Assuming tripsData is an array of objects
+import { getUnsavedTrips, saveTrip } from '../../services/tripService';
 import TripModal from '../../components/TripModal';
 
 const RecommendationsScreen = () => {
-  const recommendationTrips = tripsData.filter(trip => !trip.saved);
-  const [trips, setTrips] = useState(recommendationTrips);
+  const [trips, setTrips] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [clickedTripInfo, setClickedTripInfo] = useState(null);
 
+  useEffect(() => {
+    const fetchUnsavedTrips = async () => {
+      const trips = await getUnsavedTrips();
+      setTrips(trips);
+    };
+    fetchUnsavedTrips();
+  }, []);
+
   const currentTrip = trips[currentIndex];
 
-  const handleCheck = () => {
-    const updatedTrips = [...trips];
-    updatedTrips[currentIndex].saved = true;
-    setTrips(updatedTrips);
+  const handleCheck = async () => {
+    if (!currentTrip?.documentID) return;
+    await saveTrip(currentTrip.documentID);
     setCurrentIndex(prev => prev + 1);
   };
 
@@ -35,11 +41,13 @@ const RecommendationsScreen = () => {
 
   if (currentIndex >= trips.length) {
     return (
-      <div className="screen">
-        <h2>Recommendations</h2>
-        <Card>
-          <Card.Title>No more items</Card.Title>
-        </Card>
+      <div>
+        <div className="recommendations-header">
+          <h2>Recommendations</h2>
+        </div>
+        <div className="recommendations-screen">
+          <h3 style={{ color: "black" }} >No more recommendations</h3>
+        </div>
       </div>
     );
   }
