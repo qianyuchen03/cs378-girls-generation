@@ -40,6 +40,45 @@
     overflow: hidden;
 }
 
+/* Make tabs display in a single row */
+.recommendation-card .nav-tabs {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none; /* Firefox */
+}
+
+.recommendation-card .nav-tabs::-webkit-scrollbar {
+    display: none; /* Chrome, Safari */
+}
+
+.recommendation-card .nav-tabs .nav-link {
+    color: black; /* Default tab text color */
+}
+
+.recommendation-card .nav-tabs .nav-link:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+/* Active tab styling */
+.recommendation-card .nav-tabs .nav-link.active {
+    color: #558D8C;
+}
+
+/* Optional: Prevent shrinking of tab buttons */
+.recommendation-card .nav-item {
+    flex: 1 0 auto;
+    text-align: center;
+    white-space: nowrap;
+}
+
+/* Make tab titles more readable on small screens */
+.recommendation-card .nav-link {
+    font-size: 0.9rem;
+    padding: 0.5rem;
+}
+
 .recommendation-card .card-img-top {
     width: 95%; /* Adjust width of the image */
     height: auto; /* Keep aspect ratio intact */
