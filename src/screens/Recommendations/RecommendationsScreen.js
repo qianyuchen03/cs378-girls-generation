@@ -58,7 +58,7 @@ const RecommendationsScreen = () => {
         <h2>Recommendations</h2>
       </div>
       <div className="recommendations-screen">
-        <RecommendationsCard trip={currentTrip} onOpenModal={handleOpenModal} />
+        <RecommendationsCard key={currentTrip?.documentID} trip={currentTrip} />
         <div className="buttons">
           <Button className="skip rec-btn" onClick={handleSkip}>
             <X strokeWidth={4}/>
