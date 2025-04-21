@@ -20,11 +20,15 @@ const HomeScreen = () => {
     fetchImages();
   }, []);
 
-  const handleImageClick = (image) => {
+  const handleImageClick = (imageData) => {
     navigate('/save-to-boards', { 
       state: { 
-        selectedImage: image,
-        imageName: image.split('/').pop().split('.')[0]
+        selectedImage: {
+          url: imageData.image,
+          tags: imageData.tags || [], // Use tags from Firestore if available
+          id: imageData.id            // Include Firestore ID
+        },
+        imageName: imageData.image.split('/').pop().split('.')[0]
       } 
     });
   };
@@ -36,14 +40,14 @@ const HomeScreen = () => {
       </div>
 
       <div className="image-feed">
-        {images.map((image, index) => (
+        {images.map((imageData, index) => (
           <div 
-            key={index}
+            key={imageData.id} // Use document ID as key
             className="image-container"
-            onClick={() => handleImageClick(image)}
+            onClick={() => handleImageClick(imageData)}
           >
             <img 
-              src={image} 
+              src={imageData.image} 
               alt={`Content ${index}`} 
               className="image-item" 
             />

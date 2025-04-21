@@ -23,14 +23,21 @@ const SaveToBoardsScreen = ({ userBoards, setUserBoards }) => {
         : [...prev, boardId]
     );
   };
-
   const handleSave = () => {
     const updatedBoards = safeUserBoards.map(board => {
       if (selectedBoards.includes(board.id)) {
         return {
           ...board,
-          // Ensure images array exists before spreading
-          images: [...(board.images || []), selectedImage]
+          // Keep existing images if they exist
+          images: [
+            ...(board.images || []),
+            {
+              url: selectedImage.url,
+              tags: selectedImage.tags || [],
+            }
+          ],
+          // Set cover image if this is the first image
+          image: board.images?.length ? board.image : selectedImage.url
         };
       }
       return board;
@@ -44,7 +51,14 @@ const SaveToBoardsScreen = ({ userBoards, setUserBoards }) => {
     const newBoard = {
       id: Date.now(),
       name: newBoardName,
-      images: [selectedImage]
+      image: selectedImage.url, // Set cover image
+      images: [
+        {
+          url: selectedImage.url,
+          tags: selectedImage.tags || [],
+          addedDate: new Date().toISOString()
+        }
+      ]
     };
     
     safeSetUserBoards([...safeUserBoards, newBoard]);

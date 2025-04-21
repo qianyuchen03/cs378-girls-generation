@@ -7,5 +7,8 @@ const picsRef = collection(db, 'home-pictures');
 
 export const getAllPics = async () => {
   const snapshot = await getDocs(picsRef);
-  return snapshot.docs.map(doc => doc.data().image);
+  return snapshot.docs.map(doc => ({
+    id: doc.id,          // Include document ID
+    ...doc.data()        // Spread all document fields
+  }));
 };

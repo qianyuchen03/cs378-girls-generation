@@ -58,7 +58,10 @@ function App() {
                   path="/saved" 
                   element={<SavedScreen userBoards={userBoards} />} 
                 />
-                <Route path="/recommendations" element={<RecommendationsScreen />} />
+                <Route 
+                  path="/recommendations" 
+                  element={<RecommendationsScreen userBoards={userBoards} />} 
+                />
                 <Route 
                   path="/profile" 
                   element={
