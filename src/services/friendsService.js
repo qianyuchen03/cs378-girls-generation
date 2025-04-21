@@ -1,5 +1,5 @@
 import { db } from '../firebase';
-import { collection, query, where, getDocs } from 'firebase/firestore';
+import { collection, query, where, getDocs, limit } from 'firebase/firestore';
 
 export const fetchFriendBoardImages = async (friendId, boardId) => {
   try {
@@ -22,7 +22,22 @@ export const fetchFriendBoardImages = async (friendId, boardId) => {
   }
 };
 
-// Optional: You can add more friend-related service functions here
-// For example:
-// export const addFriend = async (friendData) => {...}
-// export const removeFriend = async (friendId) => {...}
+
+export const fetchFirstBoardImage = async (friendId, boardId) => {
+    try {
+      const q = query(
+        collection(db, 'friends-pictures'),
+        where('friendId', '==', friendId),
+        where('boardId', '==', boardId),
+        limit(1)
+      );
+      
+      const querySnapshot = await getDocs(q);
+      if (!querySnapshot.empty) {
+        return querySnapshot.docs[0].data();
+      }
+      return null;
+    } catch (error) {
+      throw error;
+    }
+  };
