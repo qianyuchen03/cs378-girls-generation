@@ -126,7 +126,12 @@ const SaveToBoardsScreen = ({ userBoards, setUserBoards }) => {
         </Button>
       </div>
 
-      <Modal show={showCreateModal} onHide={() => setShowCreateModal(false)}>
+      <Modal
+        show={showCreateModal}
+        onHide={() => setShowCreateModal(false)}
+        centered
+        dialogClassName="create-board-modal"
+      >
         <Modal.Header closeButton>
           <Modal.Title>Create new board</Modal.Title>
         </Modal.Header>

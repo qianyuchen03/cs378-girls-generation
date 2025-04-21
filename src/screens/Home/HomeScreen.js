@@ -1,17 +1,24 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './HomeScreen.css';
-
-const importAll = (r) => {
-  return r.keys()
-    .filter(key => !key.includes('default.png'))
-    .map(r);
-};
-
-const images = importAll(require.context('../../assets/board-icons', false, /\.(png|jpe?g|svg|avis)$/));
+import { getAllPics } from '../../services/homeService';
 
 const HomeScreen = () => {
   const navigate = useNavigate();
+  const [images, setImages] = useState([]);
+
+  useEffect(() => {
+    const fetchImages = async () => {
+      try {
+        const imageLinks = await getAllPics();
+        setImages(imageLinks);
+      } catch (error) {
+        console.error('Error fetching images:', error);
+      }
+    };
+
+    fetchImages();
+  }, []);
 
   const handleImageClick = (image) => {
     navigate('/save-to-boards', { 
@@ -24,12 +31,10 @@ const HomeScreen = () => {
 
   return (
     <div className="home-container">
-      {/* Header */}
       <div className="home-header sticky-top bg-white shadow-sm p-3">
         <h2 className="text-center mb-0">HOME</h2>
       </div>
-      
-      {/* Image Feed */}
+
       <div className="image-feed">
         {images.map((image, index) => (
           <div 
@@ -39,8 +44,8 @@ const HomeScreen = () => {
           >
             <img 
               src={image} 
-              alt={`Content ${index}`}
-              className="image-item"
+              alt={`Content ${index}`} 
+              className="image-item" 
             />
           </div>
         ))}
