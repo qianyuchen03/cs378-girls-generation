@@ -6,11 +6,8 @@ import camping from "../../assets/board-icons/camping.jpeg";
 import defaultIcon from "../../assets/board-icons/default.png";
 import caves from "../../assets/board-icons/caves.avif";
 import desert from "../../assets/board-icons/desert.jpeg";
-import foliage from "../../assets/board-icons/foliage.jpeg";
-import souks from "../../assets/board-icons/souks.jpeg";
 import sakura from "../../assets/board-icons/sakura.jpeg";
 import surf from "../../assets/board-icons/surf.jpeg";
-import waterfall from "../../assets/board-icons/waterfall.jpg";
 import winery from "../../assets/board-icons/winery.jpeg";
 import yoga from "../../assets/board-icons/yoga.jpeg";
 import haunted from "../../assets/board-icons/haunted.jpeg";
@@ -28,7 +25,7 @@ const FriendsScreen = () => {
       isFriend: true,
       boards: [
         { id: 1, title: "Camping", image: camping },
-        { id: 2, title: "Caves", image: caves },
+        { id: 2, title: "Sports", image: caves },
         { id: 3, title: "Desert", image: desert },
       ],
     },
@@ -88,7 +85,10 @@ const FriendsScreen = () => {
 
   const handleBoardClick = (person, board) => {
     navigate(`/board/${person.id}/${board.id}`, {
-      state: { person, board },
+      state: { 
+        friend: person,  // Passing the entire friend object
+        board: board     // Passing the entire board object
+      },
     });
   };
 
