@@ -76,6 +76,7 @@ function App() {
                   element={
                     <UserBoardScreen 
                       userBoards={userBoards} 
+                      setUserBoards={setUserBoards}
                     />
                   } 
                 />

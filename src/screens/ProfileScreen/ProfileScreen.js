@@ -61,9 +61,11 @@ export default function ProfileScreen({ userBoards = [], setUserBoards = () => {
                 onClick={() => handleBoardClick(board)}
               >
                 {board.images.length > 0 ? (
-                  <img src={board.images[0]} alt={board.name} />
+                  <img src={board.images[0].url} alt={board.name} />
                 ) : (
-                  <div className="empty-board-thumbnail"></div>
+                  <div className="empty-board-thumbnail">
+                      <span>?</span>
+                  </div>
                 )}
                 <p>{board.name}</p>
                 <button 

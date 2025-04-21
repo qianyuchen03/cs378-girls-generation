@@ -90,7 +90,7 @@ const SaveToBoardsScreen = ({ userBoards, setUserBoards }) => {
       </div>
       
       <Card className="mb-4">
-        <Card.Img variant="top" src={selectedImage} />
+        <Card.Img variant="top" src={selectedImage.url} />
       </Card>
 
       <h4 className="mb-3">Select Boards</h4>
