@@ -5,7 +5,7 @@ import { Heart, X } from "lucide-react";
 const TripCard = ({ trip, onRemove, onOpenModal }) => {
   return (
     <div className="trip-card" onClick={() => onOpenModal(trip)}>
-      <img src={trip.imageUrl} alt={trip.city} className="trip-image" />
+      <img src={trip.images[0]} alt={trip.city} className="trip-image" />
       <div className="trip-details">
       <div className="card-title">
         <h3>{trip.city}</h3>
