@@ -9,17 +9,6 @@ const RecommendationsCard = ({ trip }) => {
             <Card.Body>
                 <Tabs defaultActiveKey="overview" className="mb-3" fill>
                     <Tab eventKey="overview" title="Overview">
-                        {/* <Card.Img
-                            src={trip.imageUrl}
-                            alt={trip.city}
-                            style={{
-                                width: "100%",
-                                height: "40vh",
-                                objectFit: "cover",
-                                borderRadius: "0.5rem",
-                                marginBottom: "1rem"
-                            }}
-                        /> */}
                         <div className="trip-gallery">
                             {trip.images?.map((img, index) => (
                             <img
@@ -27,6 +16,11 @@ const RecommendationsCard = ({ trip }) => {
                                 src={img}
                                 alt={`Trip image ${index + 1}`}
                                 className="gallery-image"
+                                style={{
+                                    width: "90%",
+                                    height: "40vh",
+                                    borderRadius: "0.5rem",
+                                }}
                             />
                             ))}
                         </div>
