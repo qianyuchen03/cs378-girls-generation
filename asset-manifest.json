@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/cs378-girls-generation/static/css/main.6b1ebcc3.css",
-    "main.js": "/cs378-girls-generation/static/js/main.d5fc116c.js",
+    "main.js": "/cs378-girls-generation/static/js/main.7da7b472.js",
     "static/js/453.a74c8975.chunk.js": "/cs378-girls-generation/static/js/453.a74c8975.chunk.js",
     "index.html": "/cs378-girls-generation/index.html",
     "main.6b1ebcc3.css.map": "/cs378-girls-generation/static/css/main.6b1ebcc3.css.map",
-    "main.d5fc116c.js.map": "/cs378-girls-generation/static/js/main.d5fc116c.js.map",
+    "main.7da7b472.js.map": "/cs378-girls-generation/static/js/main.7da7b472.js.map",
     "453.a74c8975.chunk.js.map": "/cs378-girls-generation/static/js/453.a74c8975.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.6b1ebcc3.css",
-    "static/js/main.d5fc116c.js"
+    "static/js/main.7da7b472.js"
   ]
 }
