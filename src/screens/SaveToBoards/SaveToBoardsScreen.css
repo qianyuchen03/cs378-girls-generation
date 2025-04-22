@@ -55,6 +55,7 @@
   border-color: #97483E !important;
   color: white !important;
   transition: background-color 0.2s, border-color 0.2s;
+  margin-bottom: 60px;
 }
 
 .save-button:hover {
