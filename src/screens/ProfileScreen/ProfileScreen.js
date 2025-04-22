@@ -97,7 +97,6 @@ export default function ProfileScreen({ userBoards = [], setUserBoards = () => {
         {showDeleteModal && (
           <div className="modal-overlay">
             <div className="modal-content">
-              <button className="close-button" onClick={() => setShowDeleteModal(false)}>×</button>
               <h3>Are you sure you want to delete this board?</h3>
               <button onClick={() => setShowDeleteModal(false)}>Cancel</button>
               <button onClick={confirmDelete}>Confirm</button>
