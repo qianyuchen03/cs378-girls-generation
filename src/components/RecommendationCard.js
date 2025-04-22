@@ -18,7 +18,7 @@ const RecommendationsCard = ({ trip }) => {
                                 className="gallery-image"
                                 style={{
                                     width: "90%",
-                                    height: "40vh",
+                                    height: "30vh",
                                     borderRadius: "0.5rem",
                                 }}
                             />
