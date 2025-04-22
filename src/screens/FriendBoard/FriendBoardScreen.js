@@ -28,14 +28,19 @@ const FriendBoardScreen = () => {
     loadBoardImages();
   }, [friend, board]);
 
-  const handleImageClick = (image) => {
+  const handleImageClick = (imageData) => {
     navigate('/save-to-boards', { 
       state: { 
-        selectedImage: image.imageURL,
-        imageName: image.title || "Friend's Image" 
+        selectedImage: {
+          url: imageData.image,
+          tags: imageData.tags || [], // Use tags from Firestore if available
+          id: imageData.id            // Include Firestore ID
+        },
+        imageName: imageData.image.split('/').pop().split('.')[0]
       } 
     });
   };
+
 
   if (loading) {
     return (
