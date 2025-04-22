@@ -38,13 +38,25 @@ export const unsaveTrip = async (tripId) => {
 };
 
 export const getRecommendedTrips = async (userTags) => {
-  // Get trips that match at least one of the user's top tags
-  const recommendedQuery = query(
-    tripsRef,
-    where('tags', 'array-contains-any', userTags.slice(0, 3)),
-    where('saved', '==', false)
-  );
+  // Get all trips that aren't saved yet
+  const baseQuery = query(tripsRef, where('saved', '==', false));
+  const snapshot = await getDocs(baseQuery);
   
-  const snapshot = await getDocs(recommendedQuery);
-  return snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+  // Extract user's top 3 tags
+  const topTags = userTags.slice(0, 3);
+  
+  // Process and rank trips
+  const trips = snapshot.docs.map(doc => ({
+    id: doc.id,
+    ...doc.data(),
+    // Calculate match score (number of matching tags)
+    matchScore: doc.data().tags
+      ? doc.data().tags.filter(tag => topTags.includes(tag)).length
+      : 0
+  }));
+  
+  // Filter trips with at least one matching tag
+  const matchingTrips = trips.filter(trip => trip.matchScore > 0);
+  
+  return matchingTrips;
 };
