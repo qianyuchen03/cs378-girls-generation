@@ -19,13 +19,7 @@ function App() {
   const [userBoards, setUserBoards] = useState(() => {
     // Load from localStorage if available
     const saved = localStorage.getItem('userBoards');
-    return saved ? JSON.parse(saved) : [
-      { id: 1, name: 'Nightlife', images: [] },
-      { id: 2, name: 'Springbreak', images: [] },
-      { id: 3, name: 'Nature', images: [] },
-      { id: 4, name: 'City', images: [] },
-      { id: 5, name: 'International', images: [] },
-    ];
+    return saved ? JSON.parse(saved) : []; // Empty array as default
   });
 
   // Save to localStorage whenever userBoards changes
