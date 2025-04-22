@@ -46,9 +46,7 @@ const RecommendationsScreen = ({ userBoards }) => {  // Receive userBoards as pr
       // DEBUG: See final tags being used for recommendations
       console.log('Tags being used for recommendations:', userTags);
       
-      const trips = userTags.length > 0 
-        ? await getRecommendedTrips(userTags)
-        : await getUnsavedTrips();
+      const trips = await getRecommendedTrips(userTags);
       
       console.log('Recommended trips:', trips); // Optional: see results
       setTrips(trips);
