@@ -29,11 +29,14 @@ const FriendBoardScreen = () => {
   }, [friend, board]);
 
   const handleImageClick = (image) => {
+  
     navigate('/save-to-boards', { 
       state: { 
-        selectedImage: image.imageURL,
-        imageName: image.title || "Friend's Image" 
-      } 
+        selectedImage: {
+          url: image.imageURL,          // Using imageURL from the image object
+          tags: [],                     // Default empty array if no tags exist
+          id: image.id || Date.now()    // Use existing ID or generate a temporary one
+        },}
     });
   };
 
